@@ -56,15 +56,6 @@ const Home = observer(() => {
     queryFn: () => fetchMovies(keyword, page),
   });
 
-  const moveToPage = useCallback(
-    (page: number) => {
-      if (page >= 1) {
-        setPage(page);
-      }
-    },
-    [page]
-  );
-
   useEffect(() => {
     setIsQueryRunning(isFetching || isLoading);
   }, [isFetching, isLoading]);
@@ -93,6 +84,12 @@ const Home = observer(() => {
       page: page.toString(),
     });
   }, [page, keyword]);
+
+  function moveToPage(page: number) {
+    if (page >= 1) {
+      setPage(page);
+    }
+  }
 
   function openDetail(imdbID: string) {
     navigate(`/movie-detail/${imdbID}`);
