@@ -10,7 +10,7 @@ React + Vite + TS + Mobx + ReactQuery + shad/cn + Tailwind
 
 ## Structure
 
-/store - Application store
-/pages - Main pages of application
-/api - defined api calls to omdbapi
-/components/ui - components from shad/cn
+1. /store - Application store
+2. /pages - Main pages of application
+3. /api - defined api calls to omdbapi
+4. /components/ui - components from shad/cn
