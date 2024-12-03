@@ -2,13 +2,14 @@ import { fetchMovie } from "@/api/movies-api";
 import { useMovieStore } from "@/components/MovieStoreProvider";
 import { Movie } from "@/store/FavoriteMovieStore";
 import { useQuery } from "@tanstack/react-query";
-import { Star } from "lucide-react";
+import { ChevronLeft, Star } from "lucide-react";
 import { observer } from "mobx-react-lite";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const MovieDetail = observer(() => {
   const params = useParams();
   const movieStore = useMovieStore();
+  const navigate = useNavigate();
 
   const { data, isLoading, isFetching, error, isError } = useQuery({
     queryKey: ["movie", params.id],
@@ -25,6 +26,14 @@ const MovieDetail = observer(() => {
     <>
       {isError && <p>Error: {error.message}</p>}
       {(isFetching || isLoading) && <p>Loading</p>}
+      <div
+        className="flex flex-row gap-4"
+        role="button"
+        onClick={() => navigate(-1)}
+      >
+        <ChevronLeft />
+        <span>Go back</span>
+      </div>
       {data && (
         <div className="grid md:grid-cols-[1fr_200px] gap-4 mt-4">
           <div>
