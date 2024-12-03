@@ -54,6 +54,7 @@ const Home = observer(() => {
     queryKey: ["movies", keyword, page],
     enabled: keyword !== "",
     queryFn: () => fetchMovies(keyword, page),
+    staleTime: 1000 * 60 * 5,
   });
 
   useEffect(() => {

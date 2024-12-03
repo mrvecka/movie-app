@@ -14,6 +14,7 @@ const MovieDetail = observer(() => {
     queryKey: ["movie", params.id],
     enabled: !!params.id,
     queryFn: () => fetchMovie(params.id!),
+    staleTime: 1000 * 60 * 5,
   });
 
   function toggleFavoriteMovie(movie: Movie) {
